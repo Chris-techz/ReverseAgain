@@ -1,0 +1,26 @@
+String(char*) OK
+	size() / length()  OK
+	substr()
+	rfind()
+	compare()
+	+=
+	<<
+	clear(){(m_tab[0]='\0')}
+
+
+myString::myString(const char* tab) {
+	while (tab[m_length] != '\0') {
+		m_tab[m_length] = tab[m_length];
+		m_length++;
+	}
+}
+
+
+
+	
+Vector
+	vector<char>
+	vector<str>
+
+Pair
+	pair<str,int>
