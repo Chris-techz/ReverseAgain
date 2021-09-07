@@ -1,18 +1,14 @@
 // reverse.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <vector>
-#include <algorithm>
+//Replacement of the STL (and others includes)
+#include "mystl.h"
 
 class Glossary : public std::vector<std::pair<std::string, uint32_t>>
 {
 public:
     void AddWord(const std::string& _word) {
         if (1 >= _word.size()) return;
-
         auto item = std::find_if(begin(), end(), [_word](const auto& _inList) { return (0 == _inList.first.compare(_word)); });
         if (end() == item) push_back(std::make_pair(_word, 1));
         else item->second++;
@@ -59,6 +55,7 @@ int main(int argc, char** argv)
         return 0;
     }
 
+    MyString testObject(argv[1]);
     std::string inputFilePath(argv[1]);
     std::string fileNameRoot = (0 == inputFilePath.substr(inputFilePath.length() - 4, 4).compare(".txt")) ? inputFilePath.substr(0, inputFilePath.length() - 4) : inputFilePath;
 
@@ -71,17 +68,17 @@ int main(int argc, char** argv)
     Glossary reverseGlossary;
     char cur;
     std::string word;
-    while (file.get(cur).good())
+     while (file.get(cur).good())
     {
         if (_IsRealCharacter(cur)) word += cur;
         else {
             CHECKWORDLENGTH
-            _NewWordFound(reverseGlossary, reverseFile, word);
+                _NewWordFound(reverseGlossary, reverseFile, word);
             reverseFile << cur;
         }
     }
     CHECKWORDLENGTH
-    _NewWordFound(reverseGlossary, reverseFile, word);
+        _NewWordFound(reverseGlossary, reverseFile, word);
 
     reverseGlossary.DumpToFile(fileNameRoot + ".table.txt");
 
