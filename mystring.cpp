@@ -48,21 +48,12 @@ unsigned int MyString::rfind(char key) const
 	return pos;
 }
 
-bool MyString::compare(MyString word) const
+bool MyString::equals(const MyString& word) const
 {
-	int difference = 0;
-	while (word.m_chain[difference] != '\0') {
-		difference++;
-	}
-	if (difference == m_length) {
-		while (difference > 0) {
-			if (*(word.m_chain + difference) == *(m_chain + difference))
-				difference--;
-			else return true;
-		}
-	}
-	else return true;
-	return false;
+	for (int i = 0; i <= length(); i++) 
+		if (word.m_chain[i] != m_chain[i]) 
+			return false;
+	return true;
 }
 
 MyString& MyString::operator+=(const char cur)
