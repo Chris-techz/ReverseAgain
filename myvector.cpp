@@ -60,19 +60,19 @@ MyPair& MyVector::accessMyPairMember(int index)
 void MyVector::sort()
 {
 	int counter = m_count;
-	int inversion;
+	bool inversion;
 	do
 	{
-		inversion = 0;
+		inversion = false;
 		for (int i = 0; i < counter - 1; i++)
 		{
 			if (m_ptVectorTab[i].getOccurrence() > m_ptVectorTab[i + 1].getOccurrence())
 			{
 				MyPair temp;
-				temp = m_ptVectorTab[i + 1];
+				temp = m_ptVectorTab[i];
 				m_ptVectorTab[i] = m_ptVectorTab[i + 1];
 				m_ptVectorTab[i + 1] = temp;
-				inversion = 1;
+				inversion = true;
 			}
 		}
 		counter--;
