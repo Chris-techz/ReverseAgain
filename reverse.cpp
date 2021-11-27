@@ -4,6 +4,7 @@
 //Replacement of the STL (and others includes)
 #include "mystl.h"
 
+// COUCOU marine, voici mon code modifié
 class Glossary : public MyVector
 {
 private:
